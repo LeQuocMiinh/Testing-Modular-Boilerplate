@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { getCollection } from "@packages/mongodb-connector";
-import { recievedDbAfterConnect } from "../cases/todo-list.case";
+import { recievedDbAfterConnect } from "../cases/todo-list";
 import { ObjectId } from "mongodb";
 import { TodoList } from "../utils/interfaces/todo-list";
 import { typiaValidator } from "@hono/typia-validator";
