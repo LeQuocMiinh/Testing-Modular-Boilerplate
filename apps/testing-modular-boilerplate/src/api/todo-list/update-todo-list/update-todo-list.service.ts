@@ -6,7 +6,6 @@ import { APIError } from "../../../utils/common/error-handler";
 import { IClientStore, TodoList } from "../../../utils/interfaces/todo-list";
 import { isValidObjectId } from "../../../utils/validate/validate-object-id";
 import typia from "typia";
-import { typiaValidator } from "@hono/typia-validator";
 
 setupConfiguration();
 const { clientUrl, dbName }: { clientUrl: string; dbName: string } =

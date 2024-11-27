@@ -5,9 +5,11 @@ import { ObjectId } from "mongodb";
 import { APIError } from "../../../utils/common/error-handler";
 import { IClientStore } from "../../../utils/interfaces/todo-list";
 import { isValidObjectId } from "../../../utils/validate/validate-object-id";
+
 setupConfiguration();
 const { clientUrl, dbName }: { clientUrl: string; dbName: string } =
     getOrThrow('db.mongodb');
+
 export async function deleteTodolist(c: Context) {
     const clientStore: IClientStore | null = await setupDB(clientUrl, dbName);
     const collectionTodolist = getCollection(clientStore!.database, "todolist");
