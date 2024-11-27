@@ -1,15 +1,25 @@
 import { Hono } from 'hono'
-import routes from './routes/app';
+import routes from './route/app';
 import { serve } from '@hono/node-server';
-import { testingMiddleWare } from './libs/middlewares/test';
-import { logger } from '@packages/common';
+import { getOrThrow, logger, setupConfiguration } from '@packages/common';
+import { Db } from 'mongodb';
+import { setupDB } from '@packages/mongodb-connector';
 
 const app = new Hono();
 
-app.post('/test', testingMiddleWare, async (c) => {
-  const data = await c.req.json();
-  return c.json({ status: true, data: data });
-});
+setupConfiguration();
+export default async function recievedDbAfterConnect(): Promise<Db> {
+  const { clientUrl, dbName }: { clientUrl: string; dbName: string } =
+    getOrThrow('db.mongodb');
+
+  const clientStore = await setupDB(clientUrl, dbName);
+  if (!clientStore || !clientStore.database) {
+    throw new Error(`Failed to connect to the database: ${dbName}`);
+  }
+  return clientStore.database;
+}
+
+recievedDbAfterConnect();
 
 app.get('/', (c) => {
   return c.text('Hello Hono!');
