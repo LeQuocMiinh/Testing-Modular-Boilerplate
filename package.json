@@ -1,0 +1,17 @@
+{
+  "name": "hono-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "hello": "pnpm --filter @app/hello",
+    "common": "pnpm --filter @packages/common",
+    "mongodb-connector": "pnpm --filter @packages/mongodb-connector",
+    "testing-modular-boilerplate": "pnpm --filter @apps/testing-modular-boilerplate",
+    "dev:testing-modular-boilerplate": "pnpm run testing-modular-boilerplate run dev",
+    "packages:build": "pnpm run common build && pnpm run mongodb-connector build && pnpm run testing-modular-boilerplate build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "@packages/mongodb-connector",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^6.5.0",
+    "@packages/common": "workspace:*"
+  },
+  "devDependencies": {
+    "@packages/eslint-config-nodejs": "workspace:*",
+    "typescript": "^5.5.4",
+    "rimraf": "^6.0.1"
+  }
+}

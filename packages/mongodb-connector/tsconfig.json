@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "outDir": "./dist",
+    "module": "CommonJS",
+    "declaration": true,
+    "baseUrl": "./",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "strictNullChecks": true,
+    "strict": true,
+    "allowJs": true,
+    "noImplicitAny": false,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "./dist/**/*"]
+}
