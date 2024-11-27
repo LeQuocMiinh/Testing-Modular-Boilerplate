@@ -1,11 +1,11 @@
 import request from "supertest";
 import { Hono } from "hono";
 import { afterAll, beforeAll, describe, expect, it, jest } from "@jest/globals";
-import { recievedDbAfterConnect } from "../../../src/cases/todoListCase";
+import { recievedDbAfterConnect } from "../../../src/cases/todo-list.case";
 import { setupConfiguration } from "@packages/common";
 import { getCollection } from "@packages/mongodb-connector";
 import { serve } from '@hono/node-server';
-import routes from "../../../src/routes";
+import routes from "../../../src/routes/app";
 import { ObjectId } from "mongodb";
 
 describe("TodoList API tests", () => {

@@ -1,11 +1,11 @@
 import { Hono } from "hono";
 import { getCollection } from "@packages/mongodb-connector";
-import { recievedDbAfterConnect } from "../cases/todoListCase";
+import { recievedDbAfterConnect } from "../cases/todo-list.case";
 import { ObjectId } from "mongodb";
-import { TodoList } from "../libs/interfaces/UIindex";
+import { TodoList } from "../utils/interfaces/todo-list";
 import { typiaValidator } from "@hono/typia-validator";
 import typia from "typia";
-import { isValidObjectId } from "../utils/validateObjectId";
+import { isValidObjectId } from "../utils/common/validate-object-id";
 
 const todoList = new Hono();
 const APIError = (c: any, status: true | false, msg: string) => {
