@@ -3,7 +3,7 @@ module.exports = {
     transform: {
         '^.+.tsx?$': ['ts-jest', {}],
     },
-    testMatch: ['<rootDir>/tests/unit/**/*.ts', '<rootDir>/tests/e2e/**/*.e2e.ts'],
+    testMatch: ['<rootDir>/tests/unit/**/*spec.ts', '<rootDir>/tests/e2e/**/*.e2e-spec.ts'],
     // collectCoverage: true,
     // coverageReporters: ['json', 'html'],
     // coverageDirectory: '<rootDir>/coverage',

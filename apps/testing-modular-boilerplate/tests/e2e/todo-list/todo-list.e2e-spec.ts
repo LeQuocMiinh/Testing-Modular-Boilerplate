@@ -1,17 +1,17 @@
 import request from "supertest";
 import { Hono } from "hono";
 import { afterAll, beforeAll, describe, expect, it, jest } from "@jest/globals";
-import { recievedDbAfterConnect } from "../../../src/cases/todo-list.case";
-import { setupConfiguration } from "@packages/common";
-import { getCollection } from "@packages/mongodb-connector";
+import { getOrThrow, setupConfiguration } from "@packages/common";
+import { getCollection, setupDB } from "@packages/mongodb-connector";
 import { serve } from '@hono/node-server';
-import routes from "../../../src/routes/app";
+import routes from "../../../src/route/app";
 import { ObjectId } from "mongodb";
+import recievedDbAfterConnect from "../../../src/app";
 
 describe("TodoList API tests", () => {
   let db: any;
   let collection: any;
-  let firstItemId: string;
+  let firstItemId: any;
   let idArr: any[] = [];
   let server: any;
   let app = new Hono();
@@ -20,8 +20,7 @@ describe("TodoList API tests", () => {
   beforeAll(async () => {
     server = serve({ ...app, port: 4000 }, info => {
       console.log(`Listening on http://localhost:${info.port}`)
-    })
-
+    });
     setupConfiguration();
     db = await recievedDbAfterConnect();
 
