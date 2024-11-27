@@ -3,8 +3,10 @@ import { getCollection, setupDB } from "@packages/mongodb-connector";
 import { Context } from "hono";
 import { ObjectId } from "mongodb";
 import { APIError } from "../../../utils/common/error-handler";
-import { IClientStore } from "../../../utils/interfaces/todo-list";
+import { IClientStore, TodoList } from "../../../utils/interfaces/todo-list";
 import { isValidObjectId } from "../../../utils/validate/validate-object-id";
+import typia from "typia";
+import { typiaValidator } from "@hono/typia-validator";
 
 setupConfiguration();
 const { clientUrl, dbName }: { clientUrl: string; dbName: string } =
@@ -15,6 +17,15 @@ export async function updateTodolist(c: Context) {
     const collectionTodolist = getCollection(clientStore!.database, "todolist");
     const idParam = c.req.param('id')?.trim();
     const params = await c.req.json();
+
+    // Tạo validator
+    const validateEmptyField = typia.createValidate<TodoList>();
+    const validationResult = validateEmptyField(params);
+
+    if (!validationResult.success) {
+        return APIError(c, false, "Vui lòng nhập đúng dữ liệu!");
+    }
+
     if (!idParam || idParam === '') {
         return APIError(c, false, "[ID] bị thiếu!");
     }
