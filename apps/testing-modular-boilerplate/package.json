@@ -2,8 +2,8 @@
   "name": "@apps/testing-modular-boilerplate",
   "scripts": {
     "build": "rimraf dist && tsc",
-    "dev": "tsc-watch --onSuccess \"node dist/index.js\"",
-    "start": "node dist/index.js"
+    "dev": "tsc-watch --onSuccess \"node dist/app.js\"",
+    "start": "node dist/app.js"
   },
   "dependencies": {
     "@hono/typia-validator": "^0.0.5",

@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import routes from './routes/index';
+import routes from './routes/app';
 import { serve } from '@hono/node-server';
 import { createServer } from 'http';
 
